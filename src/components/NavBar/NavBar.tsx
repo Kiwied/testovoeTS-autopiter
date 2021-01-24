@@ -2,11 +2,20 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 import './NavBar.css';
+import { IOrg } from "../../interfaces";
 
-export default function NavBar({ setResult, setSuggestions, savedResults }) {
+interface NavBarProps {
+  setResult(result: {}): void
+  setSuggestions(suggestions: []): void
+  savedResults: IOrg[]
+}
+
+export const NavBar: React.FC<NavBarProps> = ({ setResult, setSuggestions,
+                                                savedResults }) =>
+{
   // "отчистка" страницы при переходе на нее обратно с '/saved'
   const handleClearPage = () => {
-    window.location.pathname !== '/' && setResult({});
+    window.location.href !== '/' && setResult({});
     setSuggestions([]);
   }
 

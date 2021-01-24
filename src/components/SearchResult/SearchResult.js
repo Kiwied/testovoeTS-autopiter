@@ -10,7 +10,6 @@ export default function SearchResult({ result, setSavedResults, savedResults, is
   React.useEffect(() => {
     setIsResultSaved(false);
     savedResults.map((org) => org.data.inn === result.data.inn && setIsResultSaved(true));
-    console.log(result.data.type !== 'INDIVIDUAL' || result.data.management.post !== undefined);
   }, [])
 
   function handleSaveResult() {

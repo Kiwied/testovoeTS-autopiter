@@ -3,16 +3,16 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 import './App.css';
 import Header from "./components/Header/Header";
-import NavBar from "./components/NavBar/NavBar";
+import { NavBar } from "./components/NavBar/NavBar";
 import NewOrgPage from "./pages/NewOrgPage";
 import SavedOrgsPage from "./pages/SavedOrgsPage";
 import { IOrg } from "./interfaces";
 
 const App: React.FC = () => {
-  const [result, setResult] = React.useState({});
+  const [result, setResult] = React.useState<IOrg | {}>({});
   const [suggestions, setSuggestions] = React.useState<IOrg[]>([]);
-  const [isInputFocused, setIsInputFocused] = React.useState(false);
-  const [savedResults, setSavedResults] = React.useState([]);
+  const [isInputFocused, setIsInputFocused] = React.useState<boolean>(false);
+  const [savedResults, setSavedResults] = React.useState<IOrg[]>([]);
 
   // проверка для фокусировки/блюра инпута и тем самым
   // показа/скрытия "подсказок"
