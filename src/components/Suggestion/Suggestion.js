@@ -2,7 +2,7 @@ import React from "react";
 
 import './Suggestion.css';
 
-export default function Suggestion({ data, setResult, setIsInputFocused }) {
+export default function Suggestion({ data, setResult, setIsInputFocused}) {
   const handleSelect = () => {
     setResult(data);
     setIsInputFocused(false);

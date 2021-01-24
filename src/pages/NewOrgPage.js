@@ -26,6 +26,7 @@ export default function NewOrgPage({ fetchSuggestions, suggestions, setResult,
                    setResult={setResult}
                    setIsInputFocused={setIsInputFocused}
                    isInputFocused={isInputFocused}
+                   isEmpty={isEmpty}
       />
       {
         // проверка для определения отрисовки результата
