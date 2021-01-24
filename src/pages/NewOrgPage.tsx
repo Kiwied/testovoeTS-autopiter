@@ -4,13 +4,26 @@ import SearchField from "../components/SearchField/SearchField";
 import plusSign from "../images/plus_sign.svg";
 import SearchResult from "../components/SearchResult/SearchResult";
 import './NewOrgPage.css';
+import { IOrg } from "../interfaces";
 
-export default function NewOrgPage({ fetchSuggestions, suggestions, setResult,
-                                     setIsInputFocused, isInputFocused, result,
-                                     setSavedResults, savedResults })
+interface NewOrgPageProps {
+  fetchSuggestions(query: string): void
+  suggestions: IOrg[]
+  setResult(result: IOrg): void
+  setIsInputFocused(isInputFocused: boolean): void
+  isInputFocused: boolean
+  result: IOrg | {}
+  setSavedResults(savedResults: IOrg[]): void
+  savedResults: IOrg[]
+}
+
+export const NewOrgPage: React.FC<NewOrgPageProps> =
+  ({ fetchSuggestions, suggestions, setResult,
+     setIsInputFocused, isInputFocused, result,
+     setSavedResults, savedResults }) =>
 {
   // вспомогательная функция для проверки объекта на "пустоту"
-  function isEmpty(obj) {
+  function isEmpty(obj: {}):boolean {
     for(var key in obj) {
       if(obj.hasOwnProperty(key))
         return false;
@@ -26,7 +39,6 @@ export default function NewOrgPage({ fetchSuggestions, suggestions, setResult,
                    setResult={setResult}
                    setIsInputFocused={setIsInputFocused}
                    isInputFocused={isInputFocused}
-                   isEmpty={isEmpty}
       />
       {
         // проверка для определения отрисовки результата
