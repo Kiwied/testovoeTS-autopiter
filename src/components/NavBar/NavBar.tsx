@@ -5,8 +5,8 @@ import './NavBar.css';
 import { IOrg } from "../../interfaces";
 
 interface NavBarProps {
-  setResult(result: {}): void
-  setSuggestions(suggestions: []): void
+  setResult(newResult: {}): void
+  setSuggestions(newSuggestions: []): void
   savedResults: IOrg[]
 }
 

@@ -9,18 +9,20 @@ import { IOrg } from "../interfaces";
 interface NewOrgPageProps {
   fetchSuggestions(query: string): void
   suggestions: IOrg[]
-  setResult(result: IOrg): void
-  setIsInputFocused(isInputFocused: boolean): void
+  setResult(newResult: IOrg): void
+  setIsInputFocused(newIsInputFocused: boolean): void
   isInputFocused: boolean
   result: IOrg | {}
-  setSavedResults(savedResults: IOrg[]): void
+  setSavedResults(newSavedResults: IOrg[]): void
   savedResults: IOrg[]
+  suggestionIndex: number
+  setSuggestionIndex(newSuggestionIndex: number): void
 }
 
 export const NewOrgPage: React.FC<NewOrgPageProps> =
-  ({ fetchSuggestions, suggestions, setResult,
-     setIsInputFocused, isInputFocused, result,
-     setSavedResults, savedResults }) =>
+  ({ fetchSuggestions, suggestions, setResult, setIsInputFocused,
+     isInputFocused, result, setSavedResults,
+     savedResults, setSuggestionIndex, suggestionIndex }) =>
 {
   // вспомогательная функция для проверки объекта на "пустоту"
   function isEmpty(obj: {}):boolean {
@@ -39,6 +41,8 @@ export const NewOrgPage: React.FC<NewOrgPageProps> =
                    setResult={setResult}
                    setIsInputFocused={setIsInputFocused}
                    isInputFocused={isInputFocused}
+                   suggestionIndex={suggestionIndex}
+                   setSuggestionIndex={setSuggestionIndex}
       />
       {
         // проверка для определения отрисовки результата

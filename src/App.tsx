@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [suggestions, setSuggestions] = React.useState<IOrg[]>([]);
   const [isInputFocused, setIsInputFocused] = React.useState<boolean>(false);
   const [savedResults, setSavedResults] = React.useState<IOrg[]>([]);
+  const [suggestionIndex, setSuggestionIndex] = React.useState<number>(-1);
 
   // проверка для фокусировки/блюра инпута и тем самым
   // показа/скрытия "подсказок"
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         setIsInputFocused(true);
       } else {
         setIsInputFocused(false);
+        setSuggestionIndex(-1);
       }
     }
     (document.getElementById('app') as HTMLElement).addEventListener('click', evtLstn);
@@ -120,6 +122,8 @@ const App: React.FC = () => {
                           result={result}
                           setSavedResults={setSavedResults}
                           savedResults={savedResults}
+                          suggestionIndex={suggestionIndex}
+                          setSuggestionIndex={setSuggestionIndex}
               />
             </Route>
 

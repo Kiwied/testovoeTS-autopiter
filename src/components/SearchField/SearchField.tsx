@@ -8,14 +8,16 @@ import {IOrg} from "../../interfaces";
 interface SearchFieldPorps {
   fetchSuggestions(query: string): void
   suggestions: IOrg[]
-  setResult(result: IOrg): void
-  setIsInputFocused(isInputFocused: boolean): void
+  setResult(newResult: IOrg): void
+  setIsInputFocused(newIsInputFocused: boolean): void
   isInputFocused: boolean
+  suggestionIndex: number
+  setSuggestionIndex(newSuggestionIndex: number): void
 }
 
 export const SearchField: React.FC<SearchFieldPorps> =
-  ({ fetchSuggestions, suggestions, setResult,
-     isInputFocused, setIsInputFocused }) =>
+  ({ fetchSuggestions, suggestions, setResult, isInputFocused,
+     setIsInputFocused, suggestionIndex, setSuggestionIndex }) =>
 {
   // реф введенного в инпут слова
   const keywordRef = React.useRef<HTMLInputElement>(null);
@@ -24,7 +26,7 @@ export const SearchField: React.FC<SearchFieldPorps> =
   const handleInput = debounce(() => fetchSuggestions(keywordRef.current!.value), 200)
 
   // стейт индекса текущей, выбранной подсказки в массиве всех Подсказок
-  const [suggestionIndex, setSuggestionIndex] = React.useState<number>(-1);
+
 
   // хэндлер выбора подсказок при помощи клавиатуры
   const handleKeyboard = (evt: React.KeyboardEvent) => {
@@ -79,6 +81,12 @@ export const SearchField: React.FC<SearchFieldPorps> =
         setSuggestionIndex(-1);
       }
     }
+
+    if (evt.key === 'Escape') {
+      evt.preventDefault();
+      setIsInputFocused(false);
+      setSuggestionIndex(-1);
+      }
   }
 
   return (
