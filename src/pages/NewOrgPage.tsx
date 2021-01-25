@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SearchField } from "../components/SearchField/SearchField";
 import plusSign from "../images/plus_sign.svg";
-import SearchResult from "../components/SearchResult/SearchResult";
+import { SearchResult } from "../components/SearchResult/SearchResult";
 import './NewOrgPage.css';
 import { IOrg } from "../interfaces";
 
@@ -58,7 +58,7 @@ export const NewOrgPage: React.FC<NewOrgPageProps> =
             </p>
           </div>
         ) : (
-          <SearchResult result={result}
+          <SearchResult result={result as IOrg}
                         setSavedResults={setSavedResults}
                         savedResults={savedResults}
           />

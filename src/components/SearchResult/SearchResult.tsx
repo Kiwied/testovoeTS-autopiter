@@ -2,9 +2,17 @@ import React from "react";
 
 import './SearchResult.css';
 import okIcon from '../../images/ok-sign.svg';
+import { IOrg } from "../../interfaces";
 
-export default function SearchResult({ result, setSavedResults, savedResults }) {
-  const [isResultSaved, setIsResultSaved] = React.useState(false);
+interface SearchResultProps {
+  result: IOrg
+  setSavedResults(newSavedResults: IOrg[]): void
+  savedResults: IOrg[]
+}
+
+export const SearchResult: React.FC<SearchResultProps> =
+  ({ result, setSavedResults, savedResults }) => {
+  const [isResultSaved, setIsResultSaved] = React.useState<boolean>(false);
 
   // проверка сохранена ли уже эта организация
   React.useEffect(() => {
@@ -35,8 +43,8 @@ export default function SearchResult({ result, setSavedResults, savedResults }) 
               {
                 // проверка на ИП, т.к. у них в объекте нет 'management' свойства
                 result.data.type !== 'INDIVIDUAL'
-                  ? result.data.management.post.charAt(0)
-                  + result.data.management.post.slice(1).toLowerCase()
+                  ? result.data.management.post!.charAt(0)
+                  + result.data.management.post!.slice(1).toLowerCase()
                   : result.data.opf.full
               }
             </h3>
