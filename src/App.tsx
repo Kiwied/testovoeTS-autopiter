@@ -5,7 +5,7 @@ import './App.css';
 import Header from "./components/Header/Header";
 import { NavBar } from "./components/NavBar/NavBar";
 import { NewOrgPage } from "./pages/NewOrgPage";
-import SavedOrgsPage from "./pages/SavedOrgsPage";
+import { SavedOrgsPage } from "./pages/SavedOrgsPage";
 import { IOrg } from "./interfaces";
 
 const App: React.FC = () => {

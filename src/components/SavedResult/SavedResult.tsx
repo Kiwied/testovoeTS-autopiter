@@ -3,14 +3,22 @@ import React from "react";
 import './SavedResult.css';
 import arrowUp from '../../images/arrow-up.svg';
 import arrowDown from '../../images/arrow-down.svg';
+import { IOrg } from "../../interfaces";
 
-export default function SavedResult({ org, setSavedResults, savedResults }) {
-  const [areDetailsOpen, setAreDetailsOpen] = React.useState(false);
+interface SavedResultProps {
+  org: IOrg
+  setSavedResults(newSavedResults: IOrg[]): void
+  savedResults: IOrg[]
+}
+
+export const SavedResult: React.FC<SavedResultProps> =
+  ({ org, setSavedResults, savedResults }) => {
+  const [areDetailsOpen, setAreDetailsOpen] = React.useState<boolean>(false);
 
   // удаление организации из Сохраненных
   function handleDeleteResult() {
-    setSavedResults((savedResult) => savedResult.filter((data) => data.data.inn !== org.data.inn))
     const newSavedResults = savedResults.filter((data) => data.data.inn !== org.data.inn)
+    setSavedResults(newSavedResults);
     localStorage.setItem('saved', JSON.stringify(newSavedResults));
   }
 
@@ -52,8 +60,8 @@ export default function SavedResult({ org, setSavedResults, savedResults }) {
                   {
                     // проверка на ИП, т.к. у них в объекте нет 'management' свойства
                     org.data.type !== 'INDIVIDUAL'
-                      ? org.data.management.post.charAt(0)
-                      + org.data.management.post.slice(1).toLowerCase()
+                      ? org.data.management.post!.charAt(0)
+                      + org.data.management.post!.slice(1).toLowerCase()
                       : org.data.opf.full
                   }
                 </span>

@@ -1,7 +1,14 @@
 import React from 'react';
-import SavedResult from "../components/SavedResult/SavedResult";
+import { SavedResult } from "../components/SavedResult/SavedResult";
+import { IOrg } from "../interfaces";
 
-export default function SavedOrgsPage({ savedResults, setSavedResults }) {
+interface SavedOrgsPageProps {
+  setSavedResults(newSavedResults: IOrg[]): void
+  savedResults: IOrg[]
+}
+
+export const SavedOrgsPage: React.FC<SavedOrgsPageProps> =
+  ({ savedResults, setSavedResults }) => {
   return (
     <div className="orgs">
       {
