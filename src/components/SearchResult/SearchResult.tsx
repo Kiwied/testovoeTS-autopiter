@@ -18,7 +18,7 @@ export const SearchResult: React.FC<SearchResultProps> =
   React.useEffect(() => {
     setIsResultSaved(false);
     savedResults.map((org) => org.data.inn === result.data.inn && setIsResultSaved(true));
-  }, [])
+  }, [result])
 
   function handleSaveResult() {
     setSavedResults([result, ...savedResults]);
