@@ -13,3 +13,5 @@
 
 Для запуска необходимо установить необходимые пакеты при помощи команды в терминале "npm i"
 и запустить скрипт "npm start"
+
+**[Ссылка на GitHub Pages](https://kiwied.github.io/testovoeTS-autopiter/)**
