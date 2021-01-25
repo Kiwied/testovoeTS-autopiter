@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import './NavBar.css';
 import { IOrg } from "../../interfaces";
@@ -13,10 +13,15 @@ interface NavBarProps {
 export const NavBar: React.FC<NavBarProps> = ({ setResult, setSuggestions,
                                                 savedResults }) =>
 {
+  // переменная для определения текущего роута
+  const location = useLocation();
+
   // "отчистка" страницы при переходе на нее обратно с '/saved'
   const handleClearPage = () => {
-    window.location.href !== '/' && setResult({});
-    setSuggestions([]);
+    if (location.pathname !== '/') {
+      setResult({});
+      setSuggestions([]);
+    }
   }
 
   return (
