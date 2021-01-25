@@ -2,8 +2,8 @@ import React from "react";
 import debounce from 'lodash.debounce';
 
 import './SearchField.css';
-import Suggestion from "../Suggestion/Suggestion";
-import {IOrg} from "../../interfaces";
+import { Suggestion } from "../Suggestion/Suggestion";
+import { IOrg } from "../../interfaces";
 
 interface SearchFieldPorps {
   fetchSuggestions(query: string): void

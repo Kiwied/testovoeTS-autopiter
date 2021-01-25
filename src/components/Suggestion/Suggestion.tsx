@@ -1,8 +1,16 @@
 import React from "react";
 
 import './Suggestion.css';
+import { IOrg } from "../../interfaces";
 
-export default function Suggestion({ data, setResult, setIsInputFocused}) {
+interface SuggestionProps {
+  data: IOrg
+  setResult(newResult: IOrg): void
+  setIsInputFocused(newIsInputFocused: boolean): void
+}
+
+export const Suggestion: React.FC<SuggestionProps> =
+  ({ data, setResult, setIsInputFocused }) => {
   const handleSelect = () => {
     setResult(data);
     setIsInputFocused(false);
