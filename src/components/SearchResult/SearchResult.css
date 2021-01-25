@@ -93,3 +93,35 @@
   font-weight: bold;
   margin-right: 16px;
 }
+
+@media screen and (max-width: 460px) {
+  .orgs__result {
+    padding-top: 20px;
+  }
+
+  .result__name {
+    font-size: 20px;
+  }
+
+  .result__container {
+    flex-direction: column;
+  }
+
+  .result__data {
+    margin-top: 20px;
+  }
+
+  .result__numbers {
+    margin-top: -206px;
+    align-self: center;
+  }
+
+  .result__save-btn {
+    margin-top: 180px;
+    width: calc(100vw - 50px);
+  }
+
+  .result__save-btn_saved {
+    text-align: center;
+  }
+}

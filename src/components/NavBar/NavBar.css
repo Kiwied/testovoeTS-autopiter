@@ -18,3 +18,13 @@
   background-color: white;
   color: #2B2829;
 }
+
+@media screen and (max-width: 650px) {
+  .navigation {
+    margin-top: 25px;
+  }
+
+  .navigation__link {
+    font-size: 11px;
+  }
+}

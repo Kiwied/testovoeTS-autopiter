@@ -16,3 +16,13 @@
 .header__logo:hover {
   opacity: .8;
 }
+
+@media screen and (max-width: 460px) {
+  .header {
+    height: 50px;
+  }
+
+  .header__logo {
+    transform: scale(.625, .625);
+  }
+}

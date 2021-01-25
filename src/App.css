@@ -10,6 +10,8 @@
   max-width: 736px;
   margin: 0 auto;
   padding-top: 56px;
+  display: flex;
+  flex-direction: column;
 }
 
 .main__title {
@@ -17,4 +19,38 @@
   line-height: 49px;
   margin: 0;
   width: fit-content;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    max-width: 650px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main {
+    align-items: center;
+    width: 100vw;
+  }
+
+  .main__title {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .main {
+    padding-top: 30px;
+  }
+
+  .main__title {
+    font-size: 31px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main__title {
+    padding: 0 10px;
+    line-height: unset;
+  }
 }

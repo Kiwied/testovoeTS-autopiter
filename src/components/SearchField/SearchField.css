@@ -28,3 +28,23 @@
   width: 688px;
   padding-top: 17px;
 }
+
+@media screen and (max-width: 768px) {
+  .orgs__search {
+    width: 602px;
+  }
+
+  .orgs__suggestions {
+    width: 602px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .orgs__search {
+    width: calc(100vw - 36px);
+  }
+
+  .orgs__suggestions {
+    width: calc(100vw - 36px);
+  }
+}
