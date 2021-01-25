@@ -3,22 +3,31 @@ import debounce from 'lodash.debounce';
 
 import './SearchField.css';
 import Suggestion from "../Suggestion/Suggestion";
+import {IOrg} from "../../interfaces";
 
-export default function SearchField({ fetchSuggestions, suggestions,
-                                      setResult, isInputFocused,
-                                      setIsInputFocused })
+interface SearchFieldPorps {
+  fetchSuggestions(query: string): void
+  suggestions: IOrg[]
+  setResult(result: IOrg): void
+  setIsInputFocused(isInputFocused: boolean): void
+  isInputFocused: boolean
+}
+
+export const SearchField: React.FC<SearchFieldPorps> =
+  ({ fetchSuggestions, suggestions, setResult,
+     isInputFocused, setIsInputFocused }) =>
 {
   // реф введенного в инпут слова
-  const keywordRef = React.useRef();
+  const keywordRef = React.useRef<HTMLInputElement>(null);
 
   // запрос к API подсказок с установленной задержкой
-  const handleInput = debounce(() => fetchSuggestions(keywordRef.current.value), 200)
+  const handleInput = debounce(() => fetchSuggestions(keywordRef.current!.value), 200)
 
   // стейт индекса текущей, выбранной подсказки в массиве всех Подсказок
-  const [suggestionIndex, setSuggestionIndex] = React.useState(-1);
+  const [suggestionIndex, setSuggestionIndex] = React.useState<number>(-1);
 
   // хэндлер выбора подсказок при помощи клавиатуры
-  const handleKeyboard = (evt) => {
+  const handleKeyboard = (evt: React.KeyboardEvent) => {
     setIsInputFocused(true);
     if (evt.key === 'ArrowDown') {
       evt.preventDefault();
@@ -79,7 +88,7 @@ export default function SearchField({ fetchSuggestions, suggestions,
              type="text"
              ref={keywordRef}
              onChange={handleInput}
-             maxLength="300"
+             maxLength={300}
              autoComplete="off"
              id="input"
              onKeyDown={handleKeyboard}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchField from "../components/SearchField/SearchField";
+import { SearchField } from "../components/SearchField/SearchField";
 import plusSign from "../images/plus_sign.svg";
 import SearchResult from "../components/SearchResult/SearchResult";
 import './NewOrgPage.css';
